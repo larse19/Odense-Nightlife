@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
+  final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
+    primary: Color(0xff2EC4B6),
+    minimumSize: Size(350, 75),
+    padding: EdgeInsets.all(5),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,13 +41,7 @@ class HomeScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 48,
                     )),
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xff2EC4B6),
-                  minimumSize: Size(350, 75),
-                  padding: EdgeInsets.all(5),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                ),
+                style: raisedButtonStyle,
                 onPressed: () {
                   Navigator.pushNamed(context, '/bars');
                 },
@@ -53,13 +54,7 @@ class HomeScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 48,
                     )),
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xff2EC4B6),
-                  minimumSize: Size(350, 75),
-                  padding: EdgeInsets.all(5),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                ),
+                style: raisedButtonStyle,
                 onPressed: () {
                   Navigator.pushNamed(context, '/clubs');
                 },
@@ -72,13 +67,7 @@ class HomeScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 48,
                     )),
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xff2EC4B6),
-                  minimumSize: Size(350, 75),
-                  padding: EdgeInsets.all(5),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                ),
+                style: raisedButtonStyle,
                 onPressed: () {
                   Navigator.pushNamed(context, '/cocktailbars');
                 },
@@ -91,13 +80,7 @@ class HomeScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 48,
                     )),
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xff2EC4B6),
-                  minimumSize: Size(350, 75),
-                  padding: EdgeInsets.all(5),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                ),
+                style: raisedButtonStyle,
                 onPressed: () {
                   Navigator.pushNamed(context, '/winehouses');
                 },
@@ -110,13 +93,7 @@ class HomeScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 48,
                     )),
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xff2EC4B6),
-                  minimumSize: Size(350, 75),
-                  padding: EdgeInsets.all(5),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                ),
+                style: raisedButtonStyle,
                 onPressed: () {
                   Navigator.pushNamed(context, '/pubs');
                 },

@@ -17,13 +17,14 @@ class Bars extends StatelessWidget {
               itemBuilder: (context) {
                 return bartypes.map((String choice) {
                   return PopupMenuItem(
-                    value: dropdownvalue,
-                    child: DropdownButton(
-                      value: dropdownvalue,
-                      items: bartypes.map((String bartypes) {
-                        return DropdownMenuItem(child: Text(bartypes));
-                      }).toList(),
-                    ),
+                    value: 0,
+                    child: Text("Din mor"),
+                    // child: DropdownButton(
+                    //   value: dropdownvalue,
+                    //   items: bartypes.map((String bartypes) {
+                    //     return DropdownMenuItem(child: Text(bartypes));
+                    //   }).toList(),
+                    // ),
                   );
                 }).toList();
               })
