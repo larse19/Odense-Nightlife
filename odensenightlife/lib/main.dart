@@ -5,6 +5,7 @@ import 'package:odensenightlife/screens/homescreen.dart';
 import 'package:odensenightlife/screens/clubs.dart';
 import 'package:odensenightlife/screens/pubs.dart';
 import 'package:odensenightlife/screens/winehouses.dart';
+import 'package:odensenightlife/screens/locationList.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
         '/clubs': (context) => Clubs(),
         '/cocktailbars': (context) => Cocktails(),
         '/winehouses': (context) => Winehouses(),
-        '/pubs': (context) => Pubs()
+        '/pubs': (context) => Pubs(),
+        '/locations': (context) => LocationList()
       },
       home: HomeScreen(),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:odensenightlife/screens/locationList.dart';
 
 class HomeScreen extends StatelessWidget {
   final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
@@ -43,7 +44,10 @@ class HomeScreen extends StatelessWidget {
                     )),
                 style: raisedButtonStyle,
                 onPressed: () {
-                  Navigator.pushNamed(context, '/bars');
+                  Navigator.pushNamed(context, 
+                    '/locations', 
+                    arguments: LocationListArguments("Bars")
+                  );
                 },
               ),
             ),
