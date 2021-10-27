@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:odensenightlife/screens/locationList.dart';
+import '../data/argumentModels.dart';
 
 class HomeScreen extends StatelessWidget {
   final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
@@ -7,7 +7,7 @@ class HomeScreen extends StatelessWidget {
     minimumSize: Size(350, 75),
     padding: EdgeInsets.all(5),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-);
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +44,8 @@ class HomeScreen extends StatelessWidget {
                     )),
                 style: raisedButtonStyle,
                 onPressed: () {
-                  Navigator.pushNamed(context, 
-                    '/locations', 
-                    arguments: LocationListArguments("bar")
-                  );
+                  Navigator.pushNamed(context, '/locationList',
+                      arguments: LocationListArguments("bar"));
                 },
               ),
             ),
@@ -60,7 +58,8 @@ class HomeScreen extends StatelessWidget {
                     )),
                 style: raisedButtonStyle,
                 onPressed: () {
-                  Navigator.pushNamed(context, '/locations', arguments: LocationListArguments("club"));
+                  Navigator.pushNamed(context, '/locationList',
+                      arguments: LocationListArguments("club"));
                 },
               ),
             ),
@@ -73,7 +72,8 @@ class HomeScreen extends StatelessWidget {
                     )),
                 style: raisedButtonStyle,
                 onPressed: () {
-                  Navigator.pushNamed(context, '/locations', arguments: LocationListArguments("cocktailbar"));
+                  Navigator.pushNamed(context, '/locationList',
+                      arguments: LocationListArguments("cocktailbar"));
                 },
               ),
             ),
@@ -86,7 +86,8 @@ class HomeScreen extends StatelessWidget {
                     )),
                 style: raisedButtonStyle,
                 onPressed: () {
-                  Navigator.pushNamed(context, '/locations', arguments: LocationListArguments("wineHouse"));
+                  Navigator.pushNamed(context, '/locationList',
+                      arguments: LocationListArguments("wineHouse"));
                 },
               ),
             ),
@@ -99,7 +100,8 @@ class HomeScreen extends StatelessWidget {
                     )),
                 style: raisedButtonStyle,
                 onPressed: () {
-                  Navigator.pushNamed(context, '/locations', arguments: LocationListArguments("pub"));
+                  Navigator.pushNamed(context, '/locationList',
+                      arguments: LocationListArguments("pub"));
                 },
               ),
             ),
