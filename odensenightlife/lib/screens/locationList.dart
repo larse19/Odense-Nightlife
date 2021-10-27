@@ -1,16 +1,7 @@
 import 'package:flutter/material.dart';
-
-class Location {
-  String name;
-  int id;
-  String description;
-  String distance;
-  String imageURL;
-  String type;
-
-  Location(this.name, this.id, this.description, this.distance, this.imageURL,
-      this.type);
-}
+import '../data/location.dart';
+import '../data/location_dao.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class LocationListArguments {
   String type;
@@ -20,6 +11,7 @@ class LocationListArguments {
 
 class LocationListItem extends StatefulWidget {
   final Location location;
+  final locationDao = LocationDao();
 
   LocationListItem({Key? key, required this.location}) : super(key: key);
 
@@ -35,34 +27,39 @@ class _LocationListItemState extends State<LocationListItem> {
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
   );
 
+  void _saveLocationTest() {
+    final Location location = widget.location;
+    widget.locationDao.saveLocation(location);
+  }
+
+  void _getLocationTest(String type) {
+    widget.locationDao.getLocations(type);
+  }
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       child: new Container(
         child: Row(children: [
           Flexible(
-              child: Column(children: [
-            Align(
-                alignment: Alignment.centerLeft,
-                child: Text(widget.location.name,
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                Text(widget.location.name,
                     style: TextStyle(
                       fontSize: 48,
-                    ))),
-            Align(
-                alignment: Alignment.centerLeft,
-                child: Text(widget.location.description,
+                    )),
+                Text(widget.location.description,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 3,
                     style: TextStyle(
                       fontSize: 20,
-                    ))),
-            Align(
-                alignment: Alignment.centerLeft,
-                child: Text(widget.location.distance,
+                    )),
+                Text(widget.location.distance,
                     style: TextStyle(
                       fontSize: 24,
-                    ))),
-          ])),
+                    )),
+              ])),
           ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.network(widget.location.imageURL,
@@ -71,51 +68,86 @@ class _LocationListItemState extends State<LocationListItem> {
       ),
       style: raisedButtonStyle,
       onPressed: () {
-        Navigator.pushNamed(context, '/locations');
+        _getLocationTest("bar");
       },
     );
   }
 }
 
-class LocationList extends StatelessWidget {
+class LocationList extends StatefulWidget {
   final List<Location> locations = [
     Location(
         "Heidis",
-        1,
+        '1',
         "this heidis bier bar very gud bar it is, i like to cum here and play berpong on tursdays",
         "3,2km",
         "https://www.oplevelsesgaver.dk/wondermedias/sys_master/productmedias/h15/hea/1063598-560x373.jpg",
         "bar"),
     Location(
         "A Bar",
-        2,
+        '2',
         "this is austrailian bar yes very gday mate",
         "3,6km",
         "https://media-cdn.tripadvisor.com/media/photo-s/12/11/4d/da/the-australian-bar.jpg",
-        "bar")
+        "bar"),
+    Location(
+        "Aya club",
+        '3',
+        "This club is for 16 year olds who are looking to smash, and do some underage drinking.",
+        "4,0km",
+        "https://media-cdn.tripadvisor.com/media/photo-s/12/98/ef/11/getlstd-property-photo.jpg",
+        "club")
   ];
+  final locationDao = LocationDao();
 
+  @override
+  State<StatefulWidget> createState() => _LocationListState();
+}
+
+class _LocationListState extends State<LocationList> {
   @override
   Widget build(BuildContext context) {
     final args =
         ModalRoute.of(context)!.settings.arguments as LocationListArguments;
 
     return Scaffold(
-      backgroundColor: Color(0xff385f71),
-      appBar: AppBar(
-        title: Text(args.type),
-        backgroundColor: new Color(0xff2ec4b6),
-      ),
-      body: locations.length > 0
+        backgroundColor: Color(0xff385f71),
+        appBar: AppBar(
+          title: Text(args.type),
+          backgroundColor: new Color(0xff2ec4b6),
+        ),
+        body: FutureBuilder<List<Location>>(
+            future: widget.locationDao.getLocations(args.type),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                return snapshot.data!.length > 0
+                    ? ListView.builder(
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Container(
+                              margin: const EdgeInsets.all(5),
+                              child: LocationListItem(
+                                  location: snapshot.data![index]));
+                        },
+                      )
+                    : const Center(child: Text('No items', style: TextStyle(fontSize: 24, color: Color(0xffffffff))));
+              } else {
+                return Center(child: CircularProgressIndicator());
+              }
+            }));
+  }
+}
+
+
+/*
+widget.locations.length > 0
           ? ListView.builder(
-              itemCount: locations.length,
+              itemCount: widget.locations.length,
               itemBuilder: (BuildContext context, int index) {
                 return Container(
                     margin: const EdgeInsets.all(5),
-                    child: LocationListItem(location: locations[index]));
+                    child: LocationListItem(location: widget.locations[index]));
               },
             )
           : const Center(child: Text('No items')),
-    );
-  }
-}
+*/

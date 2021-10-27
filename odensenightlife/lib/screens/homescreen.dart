@@ -7,7 +7,7 @@ class HomeScreen extends StatelessWidget {
     minimumSize: Size(350, 75),
     padding: EdgeInsets.all(5),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-  );
+);
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class HomeScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(context, 
                     '/locations', 
-                    arguments: LocationListArguments("Bars")
+                    arguments: LocationListArguments("bar")
                   );
                 },
               ),
@@ -60,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                     )),
                 style: raisedButtonStyle,
                 onPressed: () {
-                  Navigator.pushNamed(context, '/clubs');
+                  Navigator.pushNamed(context, '/locations', arguments: LocationListArguments("club"));
                 },
               ),
             ),
@@ -73,7 +73,7 @@ class HomeScreen extends StatelessWidget {
                     )),
                 style: raisedButtonStyle,
                 onPressed: () {
-                  Navigator.pushNamed(context, '/cocktailbars');
+                  Navigator.pushNamed(context, '/locations', arguments: LocationListArguments("cocktailbar"));
                 },
               ),
             ),
@@ -86,7 +86,7 @@ class HomeScreen extends StatelessWidget {
                     )),
                 style: raisedButtonStyle,
                 onPressed: () {
-                  Navigator.pushNamed(context, '/winehouses');
+                  Navigator.pushNamed(context, '/locations', arguments: LocationListArguments("wineHouse"));
                 },
               ),
             ),
@@ -99,7 +99,7 @@ class HomeScreen extends StatelessWidget {
                     )),
                 style: raisedButtonStyle,
                 onPressed: () {
-                  Navigator.pushNamed(context, '/pubs');
+                  Navigator.pushNamed(context, '/locations', arguments: LocationListArguments("pub"));
                 },
               ),
             ),
