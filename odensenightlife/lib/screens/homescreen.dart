@@ -44,7 +44,7 @@ class HomeScreen extends StatelessWidget {
                     )),
                 style: raisedButtonStyle,
                 onPressed: () {
-                  Navigator.pushNamed(context, '/locationList',
+                  Navigator.pushNamed(context, '/locationListScreen',
                       arguments: LocationListArguments("bar"));
                 },
               ),
@@ -58,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                     )),
                 style: raisedButtonStyle,
                 onPressed: () {
-                  Navigator.pushNamed(context, '/locationList',
+                  Navigator.pushNamed(context, '/locationListScreen',
                       arguments: LocationListArguments("club"));
                 },
               ),
@@ -72,7 +72,7 @@ class HomeScreen extends StatelessWidget {
                     )),
                 style: raisedButtonStyle,
                 onPressed: () {
-                  Navigator.pushNamed(context, '/locationList',
+                  Navigator.pushNamed(context, '/locationListScreen',
                       arguments: LocationListArguments("cocktailbar"));
                 },
               ),
@@ -86,7 +86,7 @@ class HomeScreen extends StatelessWidget {
                     )),
                 style: raisedButtonStyle,
                 onPressed: () {
-                  Navigator.pushNamed(context, '/locationList',
+                  Navigator.pushNamed(context, '/locationListScreen',
                       arguments: LocationListArguments("wineHouse"));
                 },
               ),
@@ -100,7 +100,7 @@ class HomeScreen extends StatelessWidget {
                     )),
                 style: raisedButtonStyle,
                 onPressed: () {
-                  Navigator.pushNamed(context, '/locationList',
+                  Navigator.pushNamed(context, '/locationListScreen',
                       arguments: LocationListArguments("pub"));
                 },
               ),

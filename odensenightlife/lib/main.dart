@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/home': (context) => HomeScreen(),
         '/bars': (context) => Bars(),
-        '/locationList': (context) => LocationListScreen()
+        '/locationListScreen': (context) => LocationListScreen()
       },
       home: HomeScreen(),
     );
