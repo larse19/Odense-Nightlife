@@ -11,7 +11,6 @@ class LocationDao {
     ref.set(location.toJson());
   }
 
-
   Future<List<Location>> getLocations(String type) {
     return _locationRef.child(type).once().then((DataSnapshot snapshot) {
       List<Location> locationList = [];

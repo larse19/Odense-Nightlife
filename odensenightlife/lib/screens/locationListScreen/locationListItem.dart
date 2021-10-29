@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../data/location.dart';
+import '../../data/argumentModels.dart';
 
 class LocationListItem extends StatefulWidget {
   final Location location;
@@ -50,7 +51,9 @@ class _LocationListItemState extends State<LocationListItem> {
       ),
       style: raisedButtonStyle,
       onPressed: () {
-        print(widget.location.name);
+        Navigator.pushNamed(context, '/locationListItemInfo',
+            arguments: LocationInfoArguments(widget.location));
+        print(widget.location.id);
       },
     );
   }
