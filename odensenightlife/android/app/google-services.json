@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "411303954462",
+    "firebase_url": "https://odense-nightlife-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "odense-nightlife",
+    "storage_bucket": "odense-nightlife.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411303954462:android:d0cf42ce554f840ade860f",
+        "android_client_info": {
+          "package_name": "com.example.odensenightlife"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "411303954462-2klqd5pkp4mtr1bgldcj16l1mrfjmhtc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBv1-mPw4y4mgZWic1ezfP7jvNyDKY9wO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "411303954462-2klqd5pkp4mtr1bgldcj16l1mrfjmhtc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

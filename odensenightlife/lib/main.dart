@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:odensenightlife/screens/bars.dart';
-import 'package:odensenightlife/screens/cocktails.dart';
 import 'package:odensenightlife/screens/homescreen.dart';
-import 'package:odensenightlife/screens/clubs.dart';
-import 'package:odensenightlife/screens/pubs.dart';
-import 'package:odensenightlife/screens/winehouses.dart';
+import 'package:odensenightlife/screens/locationListScreen/locationListScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,10 +14,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/home': (context) => HomeScreen(),
         '/bars': (context) => Bars(),
-        '/clubs': (context) => Clubs(),
-        '/cocktailbars': (context) => Cocktails(),
-        '/winehouses': (context) => Winehouses(),
-        '/pubs': (context) => Pubs()
+        '/locationListScreen': (context) => LocationListScreen()
       },
       home: HomeScreen(),
     );
