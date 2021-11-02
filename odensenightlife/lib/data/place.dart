@@ -1,28 +1,31 @@
-class Location {
+class Place {
   String name;
   String id;
   String description;
-  String distance;
   String imageURL;
   String type;
+  double latitude;
+  double longitude;
 
-  Location(this.name, this.id, this.description, this.distance, this.imageURL,
-      this.type);
+  Place(this.name, this.id, this.description, this.imageURL,
+      this.type, this.latitude, this.longitude);
 
-  Location.fromJson(Map<dynamic, dynamic> json)
+  Place.fromJson(Map<dynamic, dynamic> json)
       : name = json['name'] as String,
         id = json['id'] as String,
         description = json['description'] as String,
-        distance = json['distance'] as String,
         imageURL = json['imageURL'] as String,
-        type = json['type'] as String;
+        type = json['type'] as String,
+        latitude = json['latitude'] as double,
+        longitude = json['longitude'] as double;
 
   Map<dynamic, dynamic> toJson() => <dynamic, dynamic>{
         'name': name,
         'id': id.toString(),
         'description': description,
-        'distance': distance,
         'imageURL': imageURL,
         'type': type,
+        'latitude': latitude,
+        'longitude': longitude,
       };
 }

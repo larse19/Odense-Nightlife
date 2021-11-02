@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import '../../data/location.dart';
+import '../../data/place.dart';
+import 'package:location/location.dart';
+import '../../util/distanceCalculator.dart';
+
 
 class LocationListItem extends StatefulWidget {
-  final Location location;
+  final Place location;
+  final LocationData locationData;
 
-  LocationListItem({Key? key, required this.location}) : super(key: key);
+  LocationListItem({Key? key, required this.location, required this.locationData}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _LocationListItemState();
@@ -18,8 +22,11 @@ class _LocationListItemState extends State<LocationListItem> {
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
   );
 
+
   @override
   Widget build(BuildContext context) {
+  print(widget.locationData.latitude);
+  print(widget.locationData.longitude);
     return ElevatedButton(
       child: new Container(
         child: Row(children: [
@@ -37,7 +44,7 @@ class _LocationListItemState extends State<LocationListItem> {
                     style: TextStyle(
                       fontSize: 20,
                     )),
-                Text(widget.location.distance,
+                Text(calculateDistance(widget.locationData.latitude, widget.locationData.longitude, widget.location.latitude, widget.location.longitude).toStringAsFixed(1) + ' km',
                     style: TextStyle(
                       fontSize: 24,
                     )),

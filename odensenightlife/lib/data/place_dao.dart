@@ -1,24 +1,23 @@
 import 'package:firebase_database/firebase_database.dart';
-import 'location.dart';
+import 'place.dart';
 
-class LocationDao {
+class PlaceDao {
   final DatabaseReference _locationRef =
       FirebaseDatabase.instance.reference().child('locations');
 
-  void saveLocation(Location location) {
-    DatabaseReference ref = _locationRef.child(location.type).push();
-    location.id = ref.key;
-    ref.set(location.toJson());
+  void savePlace(Place place) {
+    DatabaseReference ref = _locationRef.child(place.type).push();
+    place.id = ref.key;
+    ref.set(place.toJson());
   }
 
-
-  Future<List<Location>> getLocations(String type) {
+  Future<List<Place>> getPlaces(String type) {
     return _locationRef.child(type).once().then((DataSnapshot snapshot) {
-      List<Location> locationList = [];
+      List<Place> locationList = [];
       if (snapshot.value != null) {
         Map<dynamic, dynamic> locations = snapshot.value;
         locations.forEach((key, value) {
-          locationList.add(Location.fromJson(value));
+          locationList.add(Place.fromJson(value));
         });
       }
       return locationList;
