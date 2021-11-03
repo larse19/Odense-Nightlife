@@ -105,6 +105,20 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
             ),
+            new Container(
+              margin: const EdgeInsets.all(5),
+              child: new ElevatedButton(
+                child: Text('add Place (dev)',
+                    style: TextStyle(
+                      fontSize: 48,
+                    )),
+                style: raisedButtonStyle,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/addPlace',
+                      arguments: LocationListArguments("club"));
+                },
+              ),
+            ),
           ],
         ),
       ),
