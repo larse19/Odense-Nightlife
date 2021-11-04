@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import '../../data/place.dart';
 import 'package:location/location.dart';
 import '../../util/distanceCalculator.dart';
-
+import '../locationListScreen/locationList.dart';
+import '../../data/argumentModels.dart';
 
 class LocationListItem extends StatefulWidget {
   final Place location;
   final LocationData locationData;
 
-  LocationListItem({Key? key, required this.location, required this.locationData}) : super(key: key);
+  LocationListItem(
+      {Key? key, required this.location, required this.locationData})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _LocationListItemState();
@@ -22,11 +25,10 @@ class _LocationListItemState extends State<LocationListItem> {
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
   );
 
-
   @override
   Widget build(BuildContext context) {
-  print(widget.locationData.latitude);
-  print(widget.locationData.longitude);
+    print(widget.locationData.latitude);
+    print(widget.locationData.longitude);
     return ElevatedButton(
       child: new Container(
         child: Row(children: [
@@ -44,7 +46,14 @@ class _LocationListItemState extends State<LocationListItem> {
                     style: TextStyle(
                       fontSize: 20,
                     )),
-                Text(calculateDistance(widget.locationData.latitude, widget.locationData.longitude, widget.location.latitude, widget.location.longitude).toStringAsFixed(1) + ' km',
+                Text(
+                    calculateDistance(
+                                widget.locationData.latitude,
+                                widget.locationData.longitude,
+                                widget.location.latitude,
+                                widget.location.longitude)
+                            .toStringAsFixed(1) +
+                        ' km',
                     style: TextStyle(
                       fontSize: 24,
                     )),
@@ -57,6 +66,8 @@ class _LocationListItemState extends State<LocationListItem> {
       ),
       style: raisedButtonStyle,
       onPressed: () {
+        Navigator.pushNamed(context, '/locationListItemInfo',
+            arguments: LocationInfoArguments(widget.location));
         print(widget.location.name);
       },
     );
