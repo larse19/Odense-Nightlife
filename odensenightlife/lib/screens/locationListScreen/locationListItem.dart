@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../data/place.dart';
 import 'package:location/location.dart';
 import '../../util/distanceCalculator.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 
 class LocationListItem extends StatefulWidget {
@@ -25,19 +26,22 @@ class _LocationListItemState extends State<LocationListItem> {
 
   @override
   Widget build(BuildContext context) {
-  print(widget.locationData.latitude);
-  print(widget.locationData.longitude);
     return ElevatedButton(
       child: new Container(
         child: Row(children: [
           Flexible(
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                Text(widget.location.name,
+                   AutoSizeText(widget.location.name,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                     style: TextStyle(
                       fontSize: 48,
-                    )),
+                    ),
+                    maxFontSize: 48,
+                    minFontSize: 30),
                 Text(widget.location.description,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 3,
@@ -49,6 +53,7 @@ class _LocationListItemState extends State<LocationListItem> {
                       fontSize: 24,
                     )),
               ])),
+          SizedBox(width: 10,),
           ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.network(widget.location.imageURL,
