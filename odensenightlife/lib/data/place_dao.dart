@@ -23,4 +23,23 @@ class PlaceDao {
       return locationList;
     });
   }
+
+  Future<Map<dynamic, dynamic>> getTypesOfPlaces() {
+    return FirebaseDatabase.instance
+        .reference()
+        .child('locationTypes')
+        .once()
+        .then((DataSnapshot snapshot) {
+      Map<dynamic, dynamic> types = Map();
+      if (snapshot.value != null) {
+        types = snapshot.value;
+      }
+      return types;
+    });
+  }
+
+  Future<String> getTypeDescriptiveName(String type) async {
+    Map<dynamic, dynamic> types = await getTypesOfPlaces();
+    return types[type];
+  }
 }

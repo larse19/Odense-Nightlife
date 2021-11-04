@@ -26,7 +26,21 @@ class _PlaceAdderState extends State<PlaceAdder> {
   }
 
   void addLocationTypes() async {
-      FirebaseDatabase.instance.reference().child('locationTypes').set({'bar': 'Bars', 'club': 'Clubs', 'cocktailbar': 'Cocktial Bars', 'wineHouse': 'Wine House', 'pub': 'Pubs'});
+    FirebaseDatabase.instance.reference().child('locationTypes').set({
+      'bar': 'Bars',
+      'club': 'Clubs',
+      'cocktailbar': 'Cocktial Bars',
+      'wineHouse': 'Wine House',
+      'pub': 'Pubs'
+    });
+  }
+
+  void getTypesTest() {
+    widget.placeDao
+        .getTypesOfPlaces()
+        .then((value) => value.forEach((key, value) {
+              print(value);
+            }));
   }
 
   @override
@@ -46,7 +60,7 @@ class _PlaceAdderState extends State<PlaceAdder> {
                         fontSize: 48,
                       )),
                   onPressed: () {
-                    addLocationTypes();
+                    getTypesTest();
                   },
                 ))));
   }

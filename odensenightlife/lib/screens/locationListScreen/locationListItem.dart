@@ -26,8 +26,6 @@ class _LocationListItemState extends State<LocationListItem> {
 
   @override
   Widget build(BuildContext context) {
-  print(widget.locationData.latitude);
-  print(widget.locationData.longitude);
     return ElevatedButton(
       child: new Container(
         child: Row(children: [
