@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import '../../data/place.dart';
 import 'package:location/location.dart';
@@ -35,7 +36,7 @@ class _LocationListItemState extends State<LocationListItem> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                   AutoSizeText(widget.location.name,
+                AutoSizeText(widget.location.name,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     style: TextStyle(
@@ -61,7 +62,9 @@ class _LocationListItemState extends State<LocationListItem> {
                       fontSize: 24,
                     )),
               ])),
-          SizedBox(width: 10,),
+          SizedBox(
+            width: 10,
+          ),
           ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.network(widget.location.imageURL,
