@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import '../../data/place.dart';
 import 'package:location/location.dart';
 import '../../util/distanceCalculator.dart';
-import 'package:auto_size_text/auto_size_text.dart';
-
+import '../locationListScreen/locationList.dart';
+import '../../data/argumentModels.dart';
 
 class LocationListItem extends StatefulWidget {
   final Place location;
   final LocationData locationData;
 
-  LocationListItem({Key? key, required this.location, required this.locationData}) : super(key: key);
+  LocationListItem(
+      {Key? key, required this.location, required this.locationData})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _LocationListItemState();
@@ -22,7 +24,6 @@ class _LocationListItemState extends State<LocationListItem> {
     padding: EdgeInsets.all(10),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
   );
-
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +49,14 @@ class _LocationListItemState extends State<LocationListItem> {
                     style: TextStyle(
                       fontSize: 20,
                     )),
-                Text(calculateDistance(widget.locationData.latitude, widget.locationData.longitude, widget.location.latitude, widget.location.longitude).toStringAsFixed(1) + ' km',
+                Text(
+                    calculateDistance(
+                                widget.locationData.latitude,
+                                widget.locationData.longitude,
+                                widget.location.latitude,
+                                widget.location.longitude)
+                            .toStringAsFixed(1) +
+                        ' km',
                     style: TextStyle(
                       fontSize: 24,
                     )),
@@ -62,6 +70,8 @@ class _LocationListItemState extends State<LocationListItem> {
       ),
       style: raisedButtonStyle,
       onPressed: () {
+        Navigator.pushNamed(context, '/locationListItemInfo',
+            arguments: LocationInfoArguments(widget.location));
         print(widget.location.name);
       },
     );
