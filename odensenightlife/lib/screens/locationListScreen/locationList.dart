@@ -19,6 +19,7 @@ class _LocationListState extends State<LocationList> {
   bool sortingName = false;
   //static bool sortingName;
 
+  //den her funktion skal kunne ses fra flowButton.dart på en eller anden magisk måde
   void _dinMor() {
     setState(() {
       sortingName = !sortingName;

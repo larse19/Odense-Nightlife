@@ -17,6 +17,7 @@ class _FlowMenuState extends State<FlowMenu>
 
   void _iconPressed(IconData icon) {
     if (icon == Icons.directions_walk) {
+      //Den her funktion skal kalde _dinMor() fra _LocationListState klassen
       print("Walk man");
     } else if (icon == Icons.mood) {
       print("I'm mood");
