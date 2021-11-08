@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'locationList.dart';
 
 const double buttonSize = 80;
 
@@ -14,9 +15,13 @@ class _FlowMenuState extends State<FlowMenu>
     with SingleTickerProviderStateMixin {
   late AnimationController menuAnimation;
 
-  void _walkMan(IconData icon) {
+  void _iconPressed(IconData icon) {
     if (icon == Icons.directions_walk) {
-      print("I'm walk man");
+      print("Walk man");
+    } else if (icon == Icons.mood) {
+      print("I'm mood");
+    } else if (icon == Icons.attach_money) {
+      print("I'm money");
     }
   }
 
@@ -54,6 +59,7 @@ class _FlowMenuState extends State<FlowMenu>
         width: buttonSize,
         height: buttonSize,
         child: FloatingActionButton(
+          heroTag: icon.toString(),
           elevation: 0,
           backgroundColor: new Color(0xff2ec4b6),
           splashColor: Colors.white,
@@ -63,7 +69,7 @@ class _FlowMenuState extends State<FlowMenu>
             size: 30,
           ),
           onPressed: () {
-            _walkMan(icon);
+            _iconPressed(icon);
             if (menuAnimation.status == AnimationStatus.completed) {
               menuAnimation.reverse();
             } else {
