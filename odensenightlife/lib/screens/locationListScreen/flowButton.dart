@@ -5,7 +5,8 @@ import 'locationList.dart';
 const double buttonSize = 80;
 
 class FlowMenu extends StatefulWidget {
-  const FlowMenu({Key? key}) : super(key: key);
+  Function callback;
+  FlowMenu(this.callback, {Key? key}) : super(key: key);
 
   @override
   State<FlowMenu> createState() => _FlowMenuState();
@@ -15,12 +16,14 @@ class _FlowMenuState extends State<FlowMenu>
     with SingleTickerProviderStateMixin {
   late AnimationController menuAnimation;
 
-  void _iconPressed(IconData icon) {
+  _iconPressed(IconData icon) {
     if (icon == Icons.directions_walk) {
       //Den her funktion skal kalde _dinMor() fra _LocationListState klassen
-      print("Walk man");
+      widget.callback("distance");
+      print("Sorting for distance");
     } else if (icon == Icons.mood) {
-      print("I'm mood");
+      widget.callback("name");
+      print("Sorting for name");
     } else if (icon == Icons.attach_money) {
       print("I'm money");
     }
@@ -70,6 +73,7 @@ class _FlowMenuState extends State<FlowMenu>
             size: 30,
           ),
           onPressed: () {
+            //widget.callback();
             _iconPressed(icon);
             if (menuAnimation.status == AnimationStatus.completed) {
               menuAnimation.reverse();

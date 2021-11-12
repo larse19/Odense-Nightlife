@@ -13,13 +13,13 @@ class PlaceAdder extends StatefulWidget {
 class _PlaceAdderState extends State<PlaceAdder> {
   void addPlace() async {
     Place place = new Place(
-        "Ryan's",
+        "Nedenunder",
         "id is set automatically",
         "this is the description",
-        "https://lh5.googleusercontent.com/p/AF1QipMs3c7y5VfEKPKQeAU3lZ2WA8sTubDffxAwgiwC=w484-h240-k-no",
-        "pub",
-        55.3974261,
-        10.3866601,
+        "https://lh5.googleusercontent.com/p/AF1QipMu2lhuyz6S6U_RZEnSpF7RA_nlDnfZghgsiJXw=w408-h306-k-no",
+        "bar",
+        55.36756153625466,
+        10.42790214087034,
         "about");
 
     widget.placeDao.savePlace(place);
@@ -61,7 +61,7 @@ class _PlaceAdderState extends State<PlaceAdder> {
                         fontSize: 48,
                       )),
                   onPressed: () {
-                    getTypesTest();
+                    addPlace();
                   },
                 ))));
   }

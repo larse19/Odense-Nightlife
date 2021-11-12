@@ -60,7 +60,6 @@ class _LocationListScreenState extends State<LocationListScreen> {
               return Center(child: CircularProgressIndicator());
             }
           }),
-      floatingActionButton: FlowMenu(),
     );
   }
 }
