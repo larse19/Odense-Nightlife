@@ -1,8 +1,8 @@
-import 'package:dio/dio.dart';
+/* import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_gmaps/.env.dart';
-import 'package:flutter_gmaps/directions_model.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'directions_model.dart';
 
 class DirectionsRepository {
   static const String _baseUrl =
@@ -21,7 +21,7 @@ class DirectionsRepository {
       queryParameters: {
         'origin': '${origin.latitude},${origin.longitude}',
         'destination': '${destination.latitude},${destination.longitude}',
-        'key': googleAPIKey,
+        'key': "AIzaSyDQaZks6NeyPsJRI3XQM94xSXz8t0ROzL0",
       },
     );
 
@@ -32,3 +32,4 @@ class DirectionsRepository {
     return null;
   }
 }
+ */

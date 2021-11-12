@@ -92,6 +92,11 @@ class _LocationInfoState extends State<LocationInfo> {
                   },
                 ),
               ),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/navigationScreen');
+                  },
+                  child: Text('map'))
             ]),
           ],
         ));
