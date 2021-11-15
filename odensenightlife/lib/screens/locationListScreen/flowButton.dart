@@ -16,10 +16,23 @@ class _FlowMenuState extends State<FlowMenu>
     with SingleTickerProviderStateMixin {
   late AnimationController menuAnimation;
 
+  bool iconYes = false;
+
   _iconPressed(IconData icon) {
     if (icon == Icons.directions_walk) {
       //Den her funktion skal kalde _dinMor() fra _LocationListState klassen
       widget.callback("distance");
+
+      if (iconYes) {
+        _icons.insert(3, Icons.ac_unit);
+        //_icons.add(Icons.ac_unit);
+      } else {
+        if (_icons.length > 4) {
+          _icons.removeAt(3);
+        }
+      }
+      iconYes = !iconYes;
+
       print("Sorting for distance");
     } else if (icon == Icons.sort_by_alpha) {
       widget.callback("name");
@@ -29,6 +42,20 @@ class _FlowMenuState extends State<FlowMenu>
       print("Sorting by pricing");
     }
   }
+
+  List<IconData> _icons = <IconData>[
+    // Row(
+    //   children: [
+    //     Icon(Icons.sort_by_alpha),
+    //     Icon(Icons.add),
+    //   ],
+    // ),
+    // Det her burde kunne lave to iconer på samme knap, men ellers må vi lave vores egne iconer
+    Icons.sort_by_alpha,
+    Icons.directions_walk,
+    Icons.attach_money,
+    Icons.sort_outlined,
+  ];
 
   @override
   void initState() {
@@ -50,12 +77,7 @@ class _FlowMenuState extends State<FlowMenu>
   Widget build(BuildContext context) {
     return Flow(
       delegate: FlowMenuDelegate(menuAnimation: menuAnimation),
-      children: <IconData>[
-        Icons.sort_by_alpha,
-        Icons.directions_walk,
-        Icons.attach_money,
-        Icons.sort_outlined,
-      ].map<Widget>(buildItem).toList(),
+      children: _icons.map<Widget>(buildItem).toList(),
     );
   }
 
