@@ -21,7 +21,7 @@ class _PlaceAdderState extends State<PlaceAdder> {
         55.3974261,
         10.3866601,
         "about",
-        "address");
+        "address",
         0);
 
     widget.placeDao.savePlace(place);
