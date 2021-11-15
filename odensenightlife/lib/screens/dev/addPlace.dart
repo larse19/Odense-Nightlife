@@ -20,7 +20,8 @@ class _PlaceAdderState extends State<PlaceAdder> {
         "bar",
         55.36756153625466,
         10.42790214087034,
-        "about");
+        "about",
+        0);
 
     widget.placeDao.savePlace(place);
     print(place.name + " added to database");

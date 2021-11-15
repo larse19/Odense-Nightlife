@@ -20,6 +20,7 @@ class LocationList extends StatefulWidget {
 class _LocationListState extends State<LocationList> {
   bool sortingName = false;
   bool sortingDist = false;
+  bool sortingPrice = false;
   bool ascending = false;
 
   //den her funktion skal kunne ses fra flowButton.dart på en eller anden magisk måde
@@ -27,13 +28,22 @@ class _LocationListState extends State<LocationList> {
     if (sortType == "distance") {
       setState(() {
         sortingName = false;
+        sortingPrice = false;
         sortingDist = true;
         ascending = !ascending;
       });
     } else if (sortType == "name") {
       setState(() {
         sortingDist = false;
+        sortingPrice = false;
         sortingName = true;
+        ascending = !ascending;
+      });
+    } else if (sortType == "pricing") {
+      setState(() {
+        sortingDist = false;
+        sortingName = false;
+        sortingPrice = true;
         ascending = !ascending;
       });
     }
@@ -63,6 +73,12 @@ class _LocationListState extends State<LocationList> {
                       return a.name.compareTo(b.name);
                     } else {
                       return b.name.compareTo(a.name);
+                    }
+                  } else if (sortingPrice) {
+                    if (ascending) {
+                      return a.pricing.compareTo(b.pricing);
+                    } else {
+                      return b.pricing.compareTo(a.pricing);
                     }
                   } else {
                     return 0;

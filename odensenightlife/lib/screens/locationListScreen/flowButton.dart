@@ -21,11 +21,12 @@ class _FlowMenuState extends State<FlowMenu>
       //Den her funktion skal kalde _dinMor() fra _LocationListState klassen
       widget.callback("distance");
       print("Sorting for distance");
-    } else if (icon == Icons.mood) {
+    } else if (icon == Icons.sort_by_alpha) {
       widget.callback("name");
       print("Sorting for name");
     } else if (icon == Icons.attach_money) {
-      print("I'm money");
+      widget.callback("pricing");
+      print("Sorting by pricing");
     }
   }
 
@@ -50,7 +51,7 @@ class _FlowMenuState extends State<FlowMenu>
     return Flow(
       delegate: FlowMenuDelegate(menuAnimation: menuAnimation),
       children: <IconData>[
-        Icons.mood,
+        Icons.sort_by_alpha,
         Icons.directions_walk,
         Icons.attach_money,
         Icons.sort_outlined,
@@ -64,8 +65,8 @@ class _FlowMenuState extends State<FlowMenu>
         height: buttonSize,
         child: FloatingActionButton(
           heroTag: icon.toString(),
-          elevation: 0,
-          backgroundColor: new Color(0xff2ec4b6),
+          elevation: 2.0,
+          backgroundColor: Colors.orange,
           splashColor: Colors.white,
           child: Icon(
             icon,
