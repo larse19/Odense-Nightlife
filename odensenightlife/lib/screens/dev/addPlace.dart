@@ -16,11 +16,12 @@ class _PlaceAdderState extends State<PlaceAdder> {
         "Nedenunder",
         "id is set automatically",
         "this is the description",
-        "https://lh5.googleusercontent.com/p/AF1QipMu2lhuyz6S6U_RZEnSpF7RA_nlDnfZghgsiJXw=w408-h306-k-no",
-        "bar",
-        55.36756153625466,
-        10.42790214087034,
+        "https://lh5.googleusercontent.com/p/AF1QipMs3c7y5VfEKPKQeAU3lZ2WA8sTubDffxAwgiwC=w484-h240-k-no",
+        "pub",
+        55.3974261,
+        10.3866601,
         "about",
+        "address",
         0);
 
     widget.placeDao.savePlace(place);
