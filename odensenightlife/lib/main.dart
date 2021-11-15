@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:odensenightlife/screens/bars.dart';
 import 'package:odensenightlife/screens/homescreen.dart';
 import 'package:odensenightlife/screens/locationListScreen/locationListScreen.dart';
-import 'package:odensenightlife/screens/dev/addPlace.dart';
 import 'package:odensenightlife/screens/InfoScreen/locationInfo.dart';
 import 'package:odensenightlife/screens/navigationScreen/navigationScreen.dart';
 
