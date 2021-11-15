@@ -8,9 +8,10 @@ class Place {
   double longitude;
   String about;
   String address;
+  int pricing;
 
   Place(this.name, this.id, this.description, this.imageURL, this.type,
-      this.latitude, this.longitude, this.about, this.address);
+      this.latitude, this.longitude, this.about, this.address, this.pricing);
 
   Place.fromJson(Map<dynamic, dynamic> json)
       : name = json['name'] as String,
@@ -21,7 +22,8 @@ class Place {
         latitude = json['latitude'] as double,
         longitude = json['longitude'] as double,
         about = json['about'] as String,
-        address = json['address'] as String;
+        address = json['address'] as String,
+        pricing = json['pricing'] as int;
 
   Map<dynamic, dynamic> toJson() => <dynamic, dynamic>{
         'name': name,
@@ -32,6 +34,7 @@ class Place {
         'latitude': latitude,
         'longitude': longitude,
         'about': about,
-        'address': address
+        'address': address,
+        'pricing': pricing
       };
 }
