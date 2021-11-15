@@ -334,7 +334,12 @@ class _MapViewState extends State<MapView> {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-    return Container(
+    return Scaffold(
+      appBar: AppBar(
+          title: Text("Navigation"),
+          backgroundColor: new Color(0xff2ec4b6),
+        ),
+      body: Container(
       height: height,
       width: width,
       child: Scaffold(
@@ -554,6 +559,6 @@ class _MapViewState extends State<MapView> {
           ],
         ),
       ),
-    );
+    ));
   }
 }
