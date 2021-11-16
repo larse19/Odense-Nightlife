@@ -153,7 +153,11 @@ class _LocationInfoState extends State<LocationInfo> {
                     child: GoogleMap(
                       zoomControlsEnabled: false,
                       mapType: MapType.normal,
-                      initialCameraPosition: LocationInfo._MapOfDenmark,
+                      initialCameraPosition: CameraPosition(
+                        target: LatLng(
+                            args.location.latitude, args.location.longitude),
+                        zoom: 15.4746,
+                      ),
                       markers: getmarkers(),
                       onMapCreated: (GoogleMapController controller) {
                         _controller.complete(controller);
