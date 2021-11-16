@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../data/place.dart';
 import 'package:location/location.dart';
 import '../../util/distanceCalculator.dart';
-import '../locationListScreen/locationList.dart';
 import '../../data/argumentModels.dart';
 
 class LocationListItem extends StatefulWidget {
@@ -68,8 +67,9 @@ class _LocationListItemState extends State<LocationListItem> {
           ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.network(widget.location.imageURL,
-                  height: 150, width: 150, fit: BoxFit.fitHeight))
-        ]),
+                  height: 150, width: 150, fit: BoxFit.fill))
+        ],
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,),
       ),
       style: raisedButtonStyle,
       onPressed: () {

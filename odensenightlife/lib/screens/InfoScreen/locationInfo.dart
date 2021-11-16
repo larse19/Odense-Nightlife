@@ -18,6 +18,47 @@ class _LocationInfoState extends State<LocationInfo> {
   Completer<GoogleMapController> _controller = Completer();
   final Set<Marker> markers = new Set();
 
+  List<IconData> _ratingIconList = [
+    Icons.star_border,
+    Icons.star_border,
+    Icons.star_border,
+    Icons.star_border,
+    Icons.star_border,
+  ];
+  List<IconData> _pricingIconList = [
+    Icons.star_border,
+    Icons.star_border,
+    Icons.star_border,
+    Icons.star_border,
+    Icons.star_border,
+  ];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.delayed(Duration.zero, () {
+      final args =
+          ModalRoute.of(context)!.settings.arguments as LocationInfoArguments;
+      setState(() {
+        for (int i = 1; i <= 5; i++) {
+          // Change stars to represent rating
+          if (i < args.location.rating) {
+            _ratingIconList[i - 1] = Icons.star;
+          } else if (i - 0.5 <= args.location.rating) {
+            _ratingIconList[i - 1] = Icons.star_half;
+          }
+          // Change stars to represent pricing rating
+          if (i < args.location.pricing) {
+            _pricingIconList[i - 1] = Icons.star;
+          } else if (i - 0.5 <= args.location.pricing) {
+            _pricingIconList[i - 1] = Icons.star_half;
+          }
+        }
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final args =
@@ -32,15 +73,13 @@ class _LocationInfoState extends State<LocationInfo> {
         body: ListView(
           children: [
             Column(children: <Widget>[
+              Image.network(args.location.imageURL,
+                  height: 150, width: 450, fit: BoxFit.fitWidth),
               Container(
+                padding: EdgeInsets.all(10),
                   child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.network(args.location.imageURL,
-                      height: 150, width: 450, fit: BoxFit.fitWidth),
-                  SizedBox(
-                    height: 10,
-                  ),
                   Text(
                     args.location.name,
                     style: TextStyle(
@@ -61,23 +100,33 @@ class _LocationInfoState extends State<LocationInfo> {
                   SizedBox(
                     height: 10,
                   ),
-                  Text(
-                    "Pricing: Totally student friendly",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                    ),
-                  ),
-                  Text(
-                    "Rating: Pretty gut",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                    ),
-                  ),
                   SizedBox(
                     height: 10,
                   ),
+                  Row(children: [
+                    Text("Rating:  ", 
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                      ),),
+                    Icon(_ratingIconList[0], color: Color(0xfffe621d), size: 30),
+                    Icon(_ratingIconList[1], color: Color(0xfffe621d), size: 30),
+                    Icon(_ratingIconList[2], color: Color(0xfffe621d), size: 30),
+                    Icon(_ratingIconList[3], color: Color(0xfffe621d), size: 30),
+                    Icon(_ratingIconList[4], color: Color(0xfffe621d), size: 30),
+                  ],),
+                  Row(children: [
+                    Text("Pricing: ", 
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                      )),
+                    Icon(_pricingIconList[0], color: Color(0xfffe621d), size: 30),
+                    Icon(_pricingIconList[1], color: Color(0xfffe621d), size: 30),
+                    Icon(_pricingIconList[2], color: Color(0xfffe621d), size: 30),
+                    Icon(_pricingIconList[3], color: Color(0xfffe621d), size: 30),
+                    Icon(_pricingIconList[4], color: Color(0xfffe621d), size: 30),
+                  ],)
                 ],
               )),
               Container(
@@ -94,7 +143,9 @@ class _LocationInfoState extends State<LocationInfo> {
               ),
               ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/navigationScreen', arguments: NavigationScreenArguments(args.location.address));
+                    Navigator.pushNamed(context, '/navigationScreen',
+                        arguments:
+                            NavigationScreenArguments(args.location.address));
                   },
                   child: Text('map'))
             ]),
