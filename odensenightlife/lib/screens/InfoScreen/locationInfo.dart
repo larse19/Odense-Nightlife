@@ -76,78 +76,106 @@ class _LocationInfoState extends State<LocationInfo> {
               Image.network(args.location.imageURL,
                   height: 150, width: 450, fit: BoxFit.fitWidth),
               Container(
-                padding: EdgeInsets.all(10),
+                  padding: EdgeInsets.all(10),
                   child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    args.location.name,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 48,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        args.location.name,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 48,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        args.location.about,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "Rating:  ",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 24,
+                            ),
+                          ),
+                          Icon(_ratingIconList[0],
+                              color: Color(0xfffe621d), size: 30),
+                          Icon(_ratingIconList[1],
+                              color: Color(0xfffe621d), size: 30),
+                          Icon(_ratingIconList[2],
+                              color: Color(0xfffe621d), size: 30),
+                          Icon(_ratingIconList[3],
+                              color: Color(0xfffe621d), size: 30),
+                          Icon(_ratingIconList[4],
+                              color: Color(0xfffe621d), size: 30),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text("Pricing: ",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 24,
+                              )),
+                          Icon(_pricingIconList[0],
+                              color: Color(0xfffe621d), size: 30),
+                          Icon(_pricingIconList[1],
+                              color: Color(0xfffe621d), size: 30),
+                          Icon(_pricingIconList[2],
+                              color: Color(0xfffe621d), size: 30),
+                          Icon(_pricingIconList[3],
+                              color: Color(0xfffe621d), size: 30),
+                          Icon(_pricingIconList[4],
+                              color: Color(0xfffe621d), size: 30),
+                        ],
+                      )
+                    ],
+                  )),
+              Stack(
+                children: <Widget>[
+                  Container(
+                    height: MediaQuery.of(context).size.height / 3,
+                    width: MediaQuery.of(context).size.width,
+                    child: GoogleMap(
+                      zoomControlsEnabled: false,
+                      mapType: MapType.normal,
+                      initialCameraPosition: LocationInfo._MapOfDenmark,
+                      markers: getmarkers(),
+                      onMapCreated: (GoogleMapController controller) {
+                        _controller.complete(controller);
+                      },
                     ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    args.location.about,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
+                  Opacity(
+                    opacity: 0.0,
+                    child: ElevatedButton(
+                      child: Container(
+                        height: MediaQuery.of(context).size.height / 3,
+                        width: MediaQuery.of(context).size.width,
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/navigationScreen',
+                            arguments: NavigationScreenArguments(
+                                args.location.address));
+                      },
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(children: [
-                    Text("Rating:  ", 
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                      ),),
-                    Icon(_ratingIconList[0], color: Color(0xfffe621d), size: 30),
-                    Icon(_ratingIconList[1], color: Color(0xfffe621d), size: 30),
-                    Icon(_ratingIconList[2], color: Color(0xfffe621d), size: 30),
-                    Icon(_ratingIconList[3], color: Color(0xfffe621d), size: 30),
-                    Icon(_ratingIconList[4], color: Color(0xfffe621d), size: 30),
-                  ],),
-                  Row(children: [
-                    Text("Pricing: ", 
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                      )),
-                    Icon(_pricingIconList[0], color: Color(0xfffe621d), size: 30),
-                    Icon(_pricingIconList[1], color: Color(0xfffe621d), size: 30),
-                    Icon(_pricingIconList[2], color: Color(0xfffe621d), size: 30),
-                    Icon(_pricingIconList[3], color: Color(0xfffe621d), size: 30),
-                    Icon(_pricingIconList[4], color: Color(0xfffe621d), size: 30),
-                  ],)
+                  )
                 ],
-              )),
-              Container(
-                height: MediaQuery.of(context).size.height / 3,
-                width: MediaQuery.of(context).size.width,
-                child: GoogleMap(
-                  mapType: MapType.normal,
-                  initialCameraPosition: LocationInfo._MapOfDenmark,
-                  markers: getmarkers(),
-                  onMapCreated: (GoogleMapController controller) {
-                    _controller.complete(controller);
-                  },
-                ),
               ),
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/navigationScreen',
-                        arguments:
-                            NavigationScreenArguments(args.location.address));
-                  },
-                  child: Text('map'))
             ]),
           ],
         ));
