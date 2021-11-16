@@ -186,13 +186,16 @@ class _LocationInfoState extends State<LocationInfo> {
   }
 
   Set<Marker> getmarkers() {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as LocationInfoArguments;
+
     //markers to place on map
     setState(() {
       markers.add(Marker(
         //add second marker
         markerId: MarkerId("Heidis"),
-        position:
-            LatLng(55.39462332641292, 10.381433095192778), //position of marker
+        position: LatLng(args.location.latitude,
+            args.location.longitude), //position of marker
         infoWindow: InfoWindow(
           //popup info
           title: 'Heidis',
