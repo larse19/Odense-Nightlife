@@ -23,28 +23,42 @@ class _LocationListState extends State<LocationList> {
   bool sortingPrice = false;
   bool ascending = false;
 
-  //den her funktion skal kunne ses fra flowButton.dart på en eller anden magisk måde
-  callback(String sortType) {
+  callback(String sortType, Function changeIcon, int index) {
     if (sortType == "distance") {
       setState(() {
-        sortingName = false;
-        sortingPrice = false;
-        sortingDist = true;
-        ascending = !ascending;
+        if (!sortingDist) {
+          sortingPrice = false;
+          sortingName = false;
+          ascending = true;
+          sortingDist = true;
+        } else {
+          ascending = !ascending;
+        }
+        changeIcon(index, ascending);
       });
     } else if (sortType == "name") {
       setState(() {
-        sortingDist = false;
-        sortingPrice = false;
-        sortingName = true;
-        ascending = !ascending;
+        if (!sortingName) {
+          sortingDist = false;
+          sortingPrice = false;
+          ascending = true;
+          sortingName = true;
+        } else {
+          ascending = !ascending;
+        }
+        changeIcon(index, ascending);
       });
     } else if (sortType == "pricing") {
       setState(() {
-        sortingDist = false;
-        sortingName = false;
-        sortingPrice = true;
-        ascending = !ascending;
+        if (!sortingPrice) {
+          sortingDist = false;
+          sortingName = false;
+          ascending = true;
+          sortingPrice = true;
+        } else {
+          ascending = !ascending;
+        }
+        changeIcon(index, ascending);
       });
     }
   }

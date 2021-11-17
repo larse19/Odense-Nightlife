@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-import 'locationList.dart';
 
 const double buttonSize = 80;
 
@@ -16,45 +15,54 @@ class _FlowMenuState extends State<FlowMenu>
     with SingleTickerProviderStateMixin {
   late AnimationController menuAnimation;
 
-  bool iconYes = false;
+  changeOrderIcon(index, ascending) {
+    if (ascending) {
+      setState(() {
+        _icons[index] = Icons.arrow_upward_sharp;
+      });
+    } else if (!ascending) {
+      setState(() {
+        _icons[index] = Icons.arrow_downward_sharp;
+      });
+    }
+  }
 
   _iconPressed(IconData icon) {
-    if (icon == Icons.directions_walk) {
-      //Den her funktion skal kalde _dinMor() fra _LocationListState klassen
-      widget.callback("distance");
+    if (icon == _icons[1]) {
+      _icons[0] = Icons.sort_by_alpha;
+      _icons[2] = Icons.price_change_outlined;
 
-      if (iconYes) {
-        _icons.insert(3, Icons.ac_unit);
-        //_icons.add(Icons.ac_unit);
-      } else {
-        if (_icons.length > 4) {
-          _icons.removeAt(3);
-        }
-      }
-      iconYes = !iconYes;
+      widget.callback("distance", changeOrderIcon, 1);
+
+      //changeOrderIcon(1);
 
       print("Sorting for distance");
-    } else if (icon == Icons.sort_by_alpha) {
-      widget.callback("name");
+    } else if (icon == _icons[0]) {
+      _icons[1] = Icons.directions_walk;
+      _icons[2] = Icons.price_change_outlined;
+
+      widget.callback("name", changeOrderIcon, 0);
+
+      //changeOrderIcon(0);
+
       print("Sorting for name");
-    } else if (icon == Icons.attach_money) {
-      widget.callback("pricing");
+    } else if (icon == _icons[2]) {
+      _icons[1] = Icons.directions_walk;
+      _icons[0] = Icons.sort_by_alpha;
+
+      widget.callback("pricing", changeOrderIcon, 2);
+
+      //changeOrderIcon(2);
+
       print("Sorting by pricing");
     }
   }
 
   List<IconData> _icons = <IconData>[
-    // Row(
-    //   children: [
-    //     Icon(Icons.sort_by_alpha),
-    //     Icon(Icons.add),
-    //   ],
-    // ),
-    // Det her burde kunne lave to iconer på samme knap, men ellers må vi lave vores egne iconer
     Icons.sort_by_alpha,
     Icons.directions_walk,
-    Icons.attach_money,
-    Icons.sort_outlined,
+    Icons.price_change_outlined,
+    Icons.sort_sharp,
   ];
 
   @override
@@ -88,15 +96,14 @@ class _FlowMenuState extends State<FlowMenu>
         child: FloatingActionButton(
           heroTag: icon.toString(),
           elevation: 2.0,
-          backgroundColor: Colors.orange,
-          splashColor: Colors.white,
+          backgroundColor: Color(0xFFFE621D),
+          splashColor: Color(0xff385f71),
           child: Icon(
             icon,
-            color: Colors.white,
-            size: 30,
+            color: Color(0xFFF6F7F8),
+            size: 45,
           ),
           onPressed: () {
-            //widget.callback();
             _iconPressed(icon);
             if (menuAnimation.status == AnimationStatus.completed) {
               menuAnimation.reverse();
