@@ -43,13 +43,13 @@ class _LocationInfoState extends State<LocationInfo> {
       setState(() {
         for (int i = 1; i <= 5; i++) {
           // Change stars to represent rating
-          if (i < args.location.rating) {
+          if (i <= args.location.rating) {
             _ratingIconList[i - 1] = Icons.star;
           } else if (i - 0.5 <= args.location.rating) {
             _ratingIconList[i - 1] = Icons.star_half;
           }
           // Change stars to represent pricing rating
-          if (i < args.location.pricing) {
+          if (i <= args.location.pricing) {
             _pricingIconList[i - 1] = Icons.star;
           } else if (i - 0.5 <= args.location.pricing) {
             _pricingIconList[i - 1] = Icons.star_half;
