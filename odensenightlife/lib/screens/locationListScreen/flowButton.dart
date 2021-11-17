@@ -47,7 +47,7 @@ class _FlowMenuState extends State<FlowMenu>
     } else if (icon == _icons[3]) {
       _icons[1] = Icons.directions_walk;
       _icons[0] = Icons.sort_by_alpha;
-      _icons[3] = Icons.star;
+      _icons[2] = Icons.star;
 
       widget.callback("pricing", changeOrderIcon, 3);
 
@@ -55,7 +55,7 @@ class _FlowMenuState extends State<FlowMenu>
     } else if (icon == _icons[2]) {
       _icons[1] = Icons.directions_walk;
       _icons[0] = Icons.sort_by_alpha;
-      _icons[2] = Icons.price_change_outlined;
+      _icons[3] = Icons.price_change_outlined;
 
       widget.callback("rating", changeOrderIcon, 2);
     }
