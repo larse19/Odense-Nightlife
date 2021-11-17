@@ -31,36 +31,40 @@ class _FlowMenuState extends State<FlowMenu>
     if (icon == _icons[1]) {
       _icons[0] = Icons.sort_by_alpha;
       _icons[2] = Icons.price_change_outlined;
+      _icons[3] = Icons.star;
 
       widget.callback("distance", changeOrderIcon, 1);
-
-      //changeOrderIcon(1);
 
       print("Sorting for distance");
     } else if (icon == _icons[0]) {
       _icons[1] = Icons.directions_walk;
       _icons[2] = Icons.price_change_outlined;
+      _icons[3] = Icons.star;
 
       widget.callback("name", changeOrderIcon, 0);
 
-      //changeOrderIcon(0);
-
       print("Sorting for name");
+    } else if (icon == _icons[3]) {
+      _icons[1] = Icons.directions_walk;
+      _icons[0] = Icons.sort_by_alpha;
+      _icons[3] = Icons.star;
+
+      widget.callback("pricing", changeOrderIcon, 3);
+
+      print("Sorting by pricing");
     } else if (icon == _icons[2]) {
       _icons[1] = Icons.directions_walk;
       _icons[0] = Icons.sort_by_alpha;
+      _icons[2] = Icons.price_change_outlined;
 
-      widget.callback("pricing", changeOrderIcon, 2);
-
-      //changeOrderIcon(2);
-
-      print("Sorting by pricing");
+      widget.callback("rating", changeOrderIcon, 2);
     }
   }
 
   List<IconData> _icons = <IconData>[
     Icons.sort_by_alpha,
     Icons.directions_walk,
+    Icons.star,
     Icons.price_change_outlined,
     Icons.sort_sharp,
   ];

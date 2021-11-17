@@ -21,6 +21,7 @@ class _LocationListState extends State<LocationList> {
   bool sortingName = false;
   bool sortingDist = false;
   bool sortingPrice = false;
+  bool sortingRating = false;
   bool ascending = false;
 
   callback(String sortType, Function changeIcon, int index) {
@@ -29,6 +30,7 @@ class _LocationListState extends State<LocationList> {
         if (!sortingDist) {
           sortingPrice = false;
           sortingName = false;
+          sortingRating = false;
           ascending = true;
           sortingDist = true;
         } else {
@@ -41,6 +43,7 @@ class _LocationListState extends State<LocationList> {
         if (!sortingName) {
           sortingDist = false;
           sortingPrice = false;
+          sortingRating = false;
           ascending = true;
           sortingName = true;
         } else {
@@ -53,8 +56,22 @@ class _LocationListState extends State<LocationList> {
         if (!sortingPrice) {
           sortingDist = false;
           sortingName = false;
+          sortingRating = false;
           ascending = true;
           sortingPrice = true;
+        } else {
+          ascending = !ascending;
+        }
+        changeIcon(index, ascending);
+      });
+    } else if (sortType == "rating") {
+      setState(() {
+        if (!sortingRating) {
+          sortingDist = false;
+          sortingName = false;
+          sortingPrice = false;
+          sortingRating = true;
+          ascending = true;
         } else {
           ascending = !ascending;
         }
@@ -93,6 +110,12 @@ class _LocationListState extends State<LocationList> {
                       return a.pricing.compareTo(b.pricing);
                     } else {
                       return b.pricing.compareTo(a.pricing);
+                    }
+                  } else if (sortingRating) {
+                    if (ascending) {
+                      return a.rating.compareTo(b.rating);
+                    } else {
+                      return b.rating.compareTo(a.rating);
                     }
                   } else {
                     return 0;
