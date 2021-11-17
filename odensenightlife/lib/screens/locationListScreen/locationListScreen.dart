@@ -3,7 +3,6 @@ import './locationList.dart';
 import '../../data/argumentModels.dart';
 import 'package:location/location.dart';
 import '../../data/place_dao.dart';
-import 'flowButton.dart';
 
 class LocationListScreen extends StatefulWidget {
   final PlaceDao placeDao = new PlaceDao();
