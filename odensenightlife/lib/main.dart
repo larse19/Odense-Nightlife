@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:odensenightlife/screens/bars.dart';
 import 'package:odensenightlife/screens/homescreen.dart';
 import 'package:odensenightlife/screens/locationListScreen/locationListScreen.dart';
 import 'package:odensenightlife/screens/InfoScreen/locationInfo.dart';
@@ -15,7 +14,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       routes: {
         '/home': (context) => HomeScreen(),
-        '/bars': (context) => Bars(),
         '/locationListScreen': (context) => LocationListScreen(),
         '/locationListItemInfo': (context) => LocationInfo(),
         '/navigationScreen': (context) => MapView()
