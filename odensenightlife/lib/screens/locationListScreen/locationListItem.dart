@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import '../../data/place.dart';
 import 'package:location/location.dart';
@@ -31,18 +30,16 @@ class _LocationListItemState extends State<LocationListItem> {
       child: new Container(
         child: Row(children: [
           Flexible(
-              child: Column(
+            child:Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                AutoSizeText(widget.location.name,
+                Text(widget.location.name,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     style: TextStyle(
-                      fontSize: 48,
-                    ),
-                    maxFontSize: 48,
-                    minFontSize: 30),
+                      fontSize: 30,
+                    ),),
                 Text(widget.location.description,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 3,
