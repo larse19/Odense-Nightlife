@@ -64,7 +64,7 @@ class _LocationInfoState extends State<LocationInfo> {
         ModalRoute.of(context)!.settings.arguments as LocationInfoArguments;
 
     return Scaffold(
-        backgroundColor: Color(0xff2EC4B6),
+        backgroundColor: Color(0xff385f71),
         appBar: AppBar(
           title: Text(args.location.name),
           backgroundColor: new Color(0xff2ec4b6),
@@ -164,12 +164,13 @@ class _LocationInfoState extends State<LocationInfo> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 10),
-                    child: Text("Press for navigation", 
-                            style: TextStyle(
-                              fontSize: 20,
-                            ), 
-                          )),
+                      padding: EdgeInsets.only(left: 10),
+                      child: Text(
+                        "Press for navigation",
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      )),
                   Opacity(
                     opacity: 0.0,
                     child: ElevatedButton(

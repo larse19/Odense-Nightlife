@@ -113,9 +113,10 @@ class _LocationListState extends State<LocationList> {
                     }
                   } else if (sortingRating) {
                     if (ascending) {
-                      return a.rating.compareTo(b.rating);
-                    } else {
+                      //sorting for
                       return b.rating.compareTo(a.rating);
+                    } else {
+                      return a.rating.compareTo(b.rating);
                     }
                   } else {
                     return 0;
