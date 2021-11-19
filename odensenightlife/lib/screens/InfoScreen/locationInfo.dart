@@ -151,12 +151,13 @@ class _LocationInfoState extends State<LocationInfo> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 10),
-                    child: Text("Press for navigation", 
-                            style: TextStyle(
-                              fontSize: 20,
-                            ), 
-                          )),
+                      padding: EdgeInsets.only(left: 10),
+                      child: Text(
+                        "Press for navigation",
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      )),
                   Opacity(
                     opacity: 0.0,
                     child: ElevatedButton(
