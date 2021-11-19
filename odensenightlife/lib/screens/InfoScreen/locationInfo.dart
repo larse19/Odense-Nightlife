@@ -19,17 +19,17 @@ class _LocationInfoState extends State<LocationInfo> {
   final Set<Marker> markers = new Set();
 
   List<Icon> _ratingIconList = [
-    Icon(Icons.star_border, color: Color(0xff787A7B), size: 30),
-    Icon(Icons.star_border, color: Color(0xff787A7B), size: 30),
-    Icon(Icons.star_border, color: Color(0xff787A7B), size: 30),
-    Icon(Icons.star_border, color: Color(0xff787A7B), size: 30),
+    Icon(Icons.star_border, color: Color(0xffdbd2d8), size: 30),
+    Icon(Icons.star_border, color: Color(0xffdbd2d8), size: 30),
+    Icon(Icons.star_border, color: Color(0xffdbd2d8), size: 30),
+    Icon(Icons.star_border, color: Color(0xffdbd2d8), size: 30),
     Icon(Icons.star_border, color: Color(0xffdbd2d8), size: 30),
   ];
   List<Icon> _pricingIconList = [
-    Icon(Icons.attach_money, color: Color(0xff787A7B), size: 30),
-    Icon(Icons.attach_money, color: Color(0xff787A7B), size: 30),
-    Icon(Icons.attach_money, color: Color(0xff787A7B), size: 30),
-    Icon(Icons.attach_money, color: Color(0xff787A7B), size: 30),
+    Icon(Icons.attach_money, color: Color(0xffdbd2d8), size: 30),
+    Icon(Icons.attach_money, color: Color(0xffdbd2d8), size: 30),
+    Icon(Icons.attach_money, color: Color(0xffdbd2d8), size: 30),
+    Icon(Icons.attach_money, color: Color(0xffdbd2d8), size: 30),
     Icon(Icons.attach_money, color: Color(0xffdbd2d8), size: 30),
   ];
 
