@@ -46,17 +46,33 @@ class _LocationListItemState extends State<LocationListItem> {
                     style: TextStyle(
                       fontSize: 20,
                     )),
-                Text(
-                    calculateDistance(
-                                widget.locationData.latitude,
-                                widget.locationData.longitude,
-                                widget.location.latitude,
-                                widget.location.longitude)
-                            .toStringAsFixed(1) +
-                        ' km',
-                    style: TextStyle(
-                      fontSize: 24,
-                    )),
+                SizedBox(height: 10,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      calculateDistance(
+                                  widget.locationData.latitude,
+                                  widget.locationData.longitude,
+                                  widget.location.latitude,
+                                  widget.location.longitude)
+                              .toStringAsFixed(1) +
+                          ' km',
+                      style: TextStyle(
+                        fontSize: 24,
+                      )),
+                    Row(
+                      children: [
+                        Icon(Icons.star, size: 24),
+                        Text(widget.location.rating.toString(), style: TextStyle(
+                            fontSize: 24,
+                          )), 
+                        Icon(Icons.attach_money, size: 24), 
+                        Text(widget.location.pricing.toString(), style: TextStyle(
+                            fontSize: 24,
+                        ))
+                      ],)
+                  ])
               ])),
           SizedBox(
             width: 10,

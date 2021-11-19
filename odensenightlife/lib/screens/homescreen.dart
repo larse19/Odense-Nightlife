@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
           'Home',
           style: TextStyle(fontSize: 24),
         ),
-        backgroundColor: Color(0xff2EC4B6),
+        backgroundColor: Color(0xff385f71),
         centerTitle: true,
       ),
       body: new Builder(builder: (BuildContext context) {

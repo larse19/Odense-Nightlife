@@ -43,7 +43,7 @@ class _LocationListScreenState extends State<LocationListScreen> {
       backgroundColor: Color(0xff385f71),
       appBar: AppBar(
         title: Text(args.descriptiveName),
-        backgroundColor: new Color(0xff2ec4b6),
+        backgroundColor: new Color(0xff385f71),
       ),
       body: FutureBuilder<LocationData>(
           future: getLocation(),

@@ -18,19 +18,19 @@ class _LocationInfoState extends State<LocationInfo> {
   Completer<GoogleMapController> _controller = Completer();
   final Set<Marker> markers = new Set();
 
-  List<IconData> _ratingIconList = [
-    Icons.star_border,
-    Icons.star_border,
-    Icons.star_border,
-    Icons.star_border,
-    Icons.star_border,
+  List<Icon> _ratingIconList = [
+    Icon(Icons.star_border, color: Color(0xff787A7B), size: 30),
+    Icon(Icons.star_border, color: Color(0xff787A7B), size: 30),
+    Icon(Icons.star_border, color: Color(0xff787A7B), size: 30),
+    Icon(Icons.star_border, color: Color(0xff787A7B), size: 30),
+    Icon(Icons.star_border, color: Color(0xffdbd2d8), size: 30),
   ];
-  List<IconData> _pricingIconList = [
-    Icons.star_border,
-    Icons.star_border,
-    Icons.star_border,
-    Icons.star_border,
-    Icons.star_border,
+  List<Icon> _pricingIconList = [
+    Icon(Icons.attach_money, color: Color(0xff787A7B), size: 30),
+    Icon(Icons.attach_money, color: Color(0xff787A7B), size: 30),
+    Icon(Icons.attach_money, color: Color(0xff787A7B), size: 30),
+    Icon(Icons.attach_money, color: Color(0xff787A7B), size: 30),
+    Icon(Icons.attach_money, color: Color(0xffdbd2d8), size: 30),
   ];
 
   @override
@@ -43,18 +43,15 @@ class _LocationInfoState extends State<LocationInfo> {
         for (int i = 1; i <= 5; i++) {
           // Change stars to represent rating
           if (i <= args.location.rating) {
-            _ratingIconList[i - 1] = Icons.star;
+            _ratingIconList[i - 1] = Icon(Icons.star, color: Color(0xfffe621d), size: 30);
           } else if (i - 0.5 <= args.location.rating) {
-            _ratingIconList[i - 1] = Icons.star_half;
+            _ratingIconList[i - 1] = Icon(Icons.star_half, color: Color(0xfffe621d), size: 30);
           }
           // Change stars to represent pricing rating
           if (i <= args.location.pricing) {
-            _pricingIconList[i - 1] = Icons.star;
-          } else if (i - 0.5 <= args.location.pricing) {
-            _pricingIconList[i - 1] = Icons.star_half;
+            _pricingIconList[i-1] = Icon(Icons.attach_money, color: Color(0xfffe621d), size: 30);
           }
-        }
-      });
+      }});
     });
   }
 
@@ -64,10 +61,10 @@ class _LocationInfoState extends State<LocationInfo> {
         ModalRoute.of(context)!.settings.arguments as LocationInfoArguments;
 
     return Scaffold(
-        backgroundColor: Color(0xff2EC4B6),
+        backgroundColor: Color(0xff385f71),
         appBar: AppBar(
           title: Text(args.location.name),
-          backgroundColor: new Color(0xff2ec4b6),
+          backgroundColor: new Color(0xff385f71),
         ),
         body: ListView(
           children: [
@@ -111,16 +108,11 @@ class _LocationInfoState extends State<LocationInfo> {
                               fontSize: 24,
                             ),
                           ),
-                          Icon(_ratingIconList[0],
-                              color: Color(0xfffe621d), size: 30),
-                          Icon(_ratingIconList[1],
-                              color: Color(0xfffe621d), size: 30),
-                          Icon(_ratingIconList[2],
-                              color: Color(0xfffe621d), size: 30),
-                          Icon(_ratingIconList[3],
-                              color: Color(0xfffe621d), size: 30),
-                          Icon(_ratingIconList[4],
-                              color: Color(0xfffe621d), size: 30),
+                          _ratingIconList[0],
+                          _ratingIconList[1],
+                          _ratingIconList[2],
+                          _ratingIconList[3],
+                          _ratingIconList[4],
                         ],
                       ),
                       Row(
@@ -130,16 +122,11 @@ class _LocationInfoState extends State<LocationInfo> {
                                 color: Colors.white,
                                 fontSize: 24,
                               )),
-                          Icon(_pricingIconList[0],
-                              color: Color(0xfffe621d), size: 30),
-                          Icon(_pricingIconList[1],
-                              color: Color(0xfffe621d), size: 30),
-                          Icon(_pricingIconList[2],
-                              color: Color(0xfffe621d), size: 30),
-                          Icon(_pricingIconList[3],
-                              color: Color(0xfffe621d), size: 30),
-                          Icon(_pricingIconList[4],
-                              color: Color(0xfffe621d), size: 30),
+                          _pricingIconList[0],
+                          _pricingIconList[1],
+                          _pricingIconList[2],
+                          _pricingIconList[3],
+                          _pricingIconList[4],
                         ],
                       )
                     ],
